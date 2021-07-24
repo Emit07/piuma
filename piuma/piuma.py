@@ -5,15 +5,49 @@ import io
 from typing import Dict
 
 
+class Document(Dict):
+
+	def __init__(self, value: Dict, id):
+		self.id = id
+		super().__init__(value)
+
+
 class Piuma:
 
 	def __init__(self, path: str):
 
 		self._storage = FileStorage(path)
+		self._next_id = None
+
+
+	def insert(self, data: Dict, id: int=None) -> None:
+
+		database = self._storage.read()
+
+		if not id:
+			id = self._get_next_id()
+
+		database[id] = data
+
+		self._storage.write(database)
 
 
 	def all(self) -> Dict:
 		return self._storage.read()
+
+
+	def _get_next_id(self) -> int:
+
+		if self._next_id is not None:
+			self._next_id += 1
+
+			return self._next_id
+
+		database = self._storage.read()
+		self._next_id = max(int(key) for key in database.keys())+1
+
+		return self._next_id
+
 
 
 class IOError(Exception):
@@ -45,7 +79,7 @@ class FileStorage:
 		"""
 
 		# Moves cursor to the start of the file
-		# self._handle.seek(0)
+		self._handle.seek(0)
 
 		# Serializes the data to json
 		serialized = json.dumps(data)
