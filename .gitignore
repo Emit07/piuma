@@ -1,4 +1,2 @@
 __pycache__
-
-*.json
-test.py
+flat.py

@@ -1,35 +1,102 @@
 
-import json
-import os
-import io
-from typing import Dict
+from typing import Dict, Callable
 
 
 class Document(Dict):
-
-	def __init__(self, value: Dict, id):
-		self.id = id
-		super().__init__(value)
+	"""
+	Boiler-plate for all documents or "entries" in the database
+	You can add attributes and functions if you want a more developed document
+	"""
+	pass
 
 
 class Piuma:
 
-	def __init__(self, path: str):
+	def __init__(self, path: str=""):
+		"""
+		Main Class of Piuma
 
-		self._storage = FileStorage(path)
+		This class creates the storage object and does the formatting and
+		parsing of the data stored in the storage object. This main class does
+		not include a query. 
+		"""
+		
+		# Storage object can be swapped with an object that writes to a json file
+		self._storage = MemoryStorage()
 		self._next_id = None
 
 
-	def insert(self, data: Dict, id: int=None) -> None:
+	def insert(self, data: Dict, id: int=None) -> int:
+		"""
+		Inserts a new document into the database
 
-		database = self._storage.read()
+		<data>: the data that the document will hold
+		<id>: the id of the document(optional)
+		"""
 
+		# If the id is not specified then generate an id
 		if not id:
 			id = self._get_next_id()
+		else:
+			self._next_id = id
 
-		database[id] = data
+		def updater(database: Dict):
+			"""
+			Specifies how to modify the database
 
-		self._storage.write(database)
+			Adds the document with the key of <id> 
+
+			TODO this could cause conflict if the specified id already exists
+			"""
+
+			database[id] = Document(data)
+
+		self._update_database(updater)
+
+		return id
+
+
+	def get(self, id: int) -> Dict:
+		"""
+		Returns Document by id
+
+		TODO make better??
+		"""
+
+		return self._storage.read()[id]
+
+
+	def remove(self, id: int) -> None:
+		"""
+		Removes the document with the specified id
+
+		<id>: the id of the document
+		"""
+
+		def updater(database: Dict):
+			# Removes document with existing id
+
+			database.pop(id)
+
+		self._update_database(updater)
+
+
+	def update(self, data: Dict, id: int) -> None:
+		"""
+		Updates the document with the specified id
+
+		<data>: the new data of the document that will be updated
+		<id>: the id of the document that needs to be updated
+		"""
+
+		def updater(database: Dict):
+			# if the document is valid then update it
+			if id in database:
+				database[id] = Document(data)
+			else:
+				raise KeyError(id)
+
+		self._update_database(updater)
 
 
 	def all(self) -> Dict:
@@ -37,65 +104,63 @@ class Piuma:
 
 
 	def _get_next_id(self) -> int:
+		"""
+		Returns the next available id in the database 
 
+		TODO a lot of this function seems inefficient, try to slim down
+		"""
+
+		# If _next_id is already initialized then add one and return
 		if self._next_id is not None:
 			self._next_id += 1
 
 			return self._next_id
 
 		database = self._storage.read()
-		self._next_id = max(int(key) for key in database.keys())+1
+
+		# if the database is empty then _next_id is 1
+		if not database:
+			self._next_id = 1
+		else:
+			# if the database is not empty the _next_id is 1 more than the
+			# biggest id 
+			self._next_id = max(int(key) for key in database.keys())+1
 
 		return self._next_id
 
 
+	def _update_database(self, updater: Callable) -> None:
+		"""
+		A tinydb (https://github.com/msiemens/tinydb) style update class to
+		update the database and initialize it if it is not already
 
-class IOError(Exception):
-	pass
+		<updater>: a function that specifies how to update the database
+		"""
+
+		database = self._storage.read()
+
+		# Initializes the database if it is empty
+		if not database:
+			databse = {}
+
+		# Applies changes to the database
+		updater(database)
+
+		self._storage.write(database)
 
 
-class FileStorage:
+class MemoryStorage:
 
-	def __init__(self, path: str):
-		
-		self._handle = open(path, "r+")
+	def __init__(self):
+		"""
+		A memory storage object for very fast reading and writing
+		"""
+		self._memory = None
 
 
 	def read(self) -> Dict:
-		"""
-		Reads file and returns json data
-		"""
-
-		# Moves cursor to the start of the file
-		self._handle.seek(0)
-
-		# Returns loaded json content of file
-		return json.load(self._handle)
+		return self._memory
 
 
 	def write(self, data: Dict) -> None:
-		"""
-		Writes json data to the file
-		"""
-
-		# Moves cursor to the start of the file
-		self._handle.seek(0)
-
-		# Serializes the data to json
-		serialized = json.dumps(data)
-
-		# https://github.com/msiemens/tinydb/blob/master/tinydb/storages.py
-		try:
-			# Writes the serialized data to file
-			self._handle.write(serialized)
-		except io.UnsupportedOperation:
-			raise IOError
-
-		# Ensures file is written to and truncates the file if it is shortened
-		self._handle.flush()
-		os.fsync(self._handle.fileno())
-		self._handle.truncate()
-
-
-	def close(self) -> None:
-		self._handle.close()
+		self._memory = data
