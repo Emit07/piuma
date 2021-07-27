@@ -12,7 +12,7 @@
 	<img src="https://img.shields.io/badge/test%20coverage-100%25-green?style=flat-square">
 	<img src="https://img.shields.io/badge/docs%20coverage-100%25-green?style=flat-square">
 	<img src="https://img.shields.io/badge/lines-54-green?style=flat-square">
-	<img src="https://shields.io/github/size/Emit07/piuma/piuma/piuma.py?style=flat-square">
+	<img src="https://shields.io/github/size/Emit07/piuma/misc/flat.py?style=flat-square">
 	<img src="https://shields.io/github/license/emit07/piuma?style=flat-square">
 </div>
 
