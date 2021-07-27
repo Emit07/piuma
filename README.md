@@ -3,7 +3,7 @@
 </div>
 
 <span align="center">
-	<h2 align="center">Piuma</h2>
+	<h3 align="center">Piuma</h3>
 	<p align="center">A ultra-lighweight document oriented database written in 54 lines of python</p>
 </span>
 
