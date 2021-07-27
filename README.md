@@ -7,6 +7,13 @@
 	<p align="center">A ultra-lighweight document oriented database written in 54 lines of python</p>
 </span>
 
+<div align="center">
+	<img src="https://img.shields.io/badge/version-v1.0.0-green?style=flat-square">
+	<img src="https://img.shields.io/badge/test%20coverage-100%25-green?style=flat-square">
+	<img src="https://shields.io/github/size/Emit07/piuma/piuma/piuma.py?style=flat-square">
+	<img src="https://shields.io/github/license/emit07/piuma?style=flat-square">
+</div>
+
 Piuma is an no-headache ultra-lightweight local document database written purely in python. With just over 50 lines (54 lines to be precise) of active code Piuma is designed with just the **absoulute bare** essentials in mind. In the core version of Piuma there is no query language or any advanced search/modify functions. In its current version Piuma only stores data in memory, I plan to add local storage hopefully in the near future. This database should not be taken too seriously and should really only be used for small projects and testing.
 
 ## Why you *should* use Piuma?
