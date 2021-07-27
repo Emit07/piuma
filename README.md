@@ -4,12 +4,14 @@
 
 <span align="center">
 	<h3 align="center">Piuma</h3>
-	<p align="center">A ultra-lighweight document oriented database written in 54 lines of python</p>
+	<p align="center">An ultra-lighweight document oriented database</p>
 </span>
 
 <div align="center">
 	<img src="https://img.shields.io/badge/version-v1.0.0-green?style=flat-square">
 	<img src="https://img.shields.io/badge/test%20coverage-100%25-green?style=flat-square">
+	<img src="https://img.shields.io/badge/docs%20coverage-100%25-green?style=flat-square">
+	<img src="https://img.shields.io/badge/lines-54-green?style=flat-square">
 	<img src="https://shields.io/github/size/Emit07/piuma/piuma/piuma.py?style=flat-square">
 	<img src="https://shields.io/github/license/emit07/piuma?style=flat-square">
 </div>
