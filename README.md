@@ -1,3 +1,7 @@
+<div align="center">
+	<img width="200" height="200" style="margin: 20px" src="https://raw.githubusercontent.com/Emit07/piuma/master/logo/piuma.png">
+</div>
+
 <h1 align="center">
 	Piuma
 </h1>
