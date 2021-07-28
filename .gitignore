@@ -1,2 +1,7 @@
 __pycache__
 .DS_Store
+*.egg
+*.egg-info
+build
+dist
+snek.egg-info

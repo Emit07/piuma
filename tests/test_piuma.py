@@ -17,7 +17,7 @@ class Test_Piuma(unittest.TestCase):
 
 	def test_insert(self):
 
-		self.db._storage.write({})
+		self.db._storage.write(None)
 		self._next_id = None
 
 		self.db.insert({"a":0})
@@ -31,7 +31,7 @@ class Test_Piuma(unittest.TestCase):
 
 	def test_insert_return_id(self):
 
-		self.db._storage.write({})
+		self.db._storage.write(None)
 		self._next_id = None
 
 		self.assertEqual(self.db.insert({"a":0}), 1)
@@ -41,7 +41,7 @@ class Test_Piuma(unittest.TestCase):
 
 	def test_all(self):
 
-		self.db._storage.write({})
+		self.db._storage.write(None)
 		self._next_id = None
 
 		self.db.insert({"a":0})
@@ -55,7 +55,7 @@ class Test_Piuma(unittest.TestCase):
 
 	def test_get(self):
 		
-		self.db._storage.write({})
+		self.db._storage.write(None)
 		self._next_id = None
 
 		self.db.insert({"a":0})
@@ -69,7 +69,7 @@ class Test_Piuma(unittest.TestCase):
 
 	def test_remove(self):
 
-		self.db._storage.write({})
+		self.db._storage.write(None)
 		self._next_id = None
 
 		self.db.insert({"a":0})
@@ -91,7 +91,7 @@ class Test_Piuma(unittest.TestCase):
 
 	def test_update(self):
 
-		self.db._storage.write({})
+		self.db._storage.write(None)
 		self._next_id = None
 
 		self.db.insert({"a":0})
@@ -115,7 +115,7 @@ class Test_Piuma(unittest.TestCase):
 
 		# TODO Check for id if its going down (actual insert?)
 
-		self.db._storage.write({})
+		self.db._storage.write(None)
 		self._next_id = None
 
 		self.assertEqual(self.db._get_next_id(), 1)
@@ -131,7 +131,7 @@ class Test_Piuma(unittest.TestCase):
 
 		# TODO write more tests for update
 
-		self.db._storage.write({})
+		self.db._storage.write(None)
 		self._next_id = None
 
 		id=1

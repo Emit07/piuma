@@ -141,7 +141,7 @@ class Piuma:
 
 		# Initializes the database if it is empty
 		if not database:
-			databse = {}
+			database = {}
 
 		# Applies changes to the database
 		updater(database)

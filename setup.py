@@ -1,14 +1,49 @@
 from setuptools import setup, find_packages
 
-if sys.version_info < (3, 6):                                                                                           
-    sys.exit('Python 3.6 or greater is required for Snek')  
+LONG_DESCRIPTION = """Piuma is an no-headache ultra-lightweight local document
+ database written purely in python. With just over 50 lines (54 lines to be 
+ precise) of active code and a source file that is 3.39kb (comments included) 
+ piuma is designed without just the **absoulute bare** essentials in mind. In 
+ the core version of Piuma there is no query language or any advanced search/modify 
+ functions. In its current version Piuma only stores data in memory, I plan to add 
+ local storage subpackage hopefully in the near future. This database should not be 
+ taken too seriously and should really only be used for small projects and testing.
+
+## Why you *should* use Piuma?
+* **Light and Small:** Piuma is written in 54 lines of code and can be sub 
+millisecond fast because of its memory storage
+* **Easy to Use:** Piuma runs out of the box and is easy to use and learn. 
+Piuma also requires no dependencies or external servers.
+* **Experimenting:** If you are trying something new and you need a fast 
+database that just works while testing then Piuma is a good choice.
+
+## Why you *should not* use Piuma?
+* **Big Database:** Piuma was not designed to be used as a big database; Piuma 
+only runs *only* in memory (for now) so the limit of how big it could be comes 
+much quicker than other database
+* **ACID Guarantees:** Because of Piumas small nature it does not have room for 
+[ACID Guarantees](https://en.wikipedia.org/wiki/ACID)
+* **Query Language:** Piuma does not have a query language (though I plan to 
+add one in a submodule in the future)
+
+## Why is it called Piuma?
+
+Piuma (‹più·ma›) is the Italian word for feather and (from what I feel) the word 
+feather can convay lightness. Also I am a little proud of the logo I made :]
+
+# Documentation
+
+I recomend checking out the [documentation](https://piuma.readthedocs.io/) I wrote."""
+
 
 setup(
     name="piuma",
-    version="v1.0.0",
+    version="1.0.2",
+    license="gpl-3.0",
     author="Alessandro De Leo",
     author_email="emit07@protonmail.com",
     description="An ultra-lighweight document oriented database",
+    long_description=LONG_DESCRIPTION,
     packages=find_packages(),
     keywords=['python', 'database', 'document oriented'],
     url="https://github.com/emit07/piuma",
