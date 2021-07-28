@@ -39,7 +39,7 @@ word feather can convay lightness. Also I am a little proud of the logo I made :
 
 setup(
     name="piuma",
-    version="1.0.3",
+    version="1.0.4",
     license="gpl-3.0",
     author="Alessandro De Leo",
     author_email="emit07@protonmail.com",
