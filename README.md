@@ -10,7 +10,7 @@
 <div align="center">
 	<a href="https://pypi.org/project/piuma/"><img src="https://img.shields.io/pypi/v/piuma?style=flat-square"></a>
 	<img src="https://img.shields.io/badge/test%20coverage-100%25-green?style=flat-square">
-	<a href="https://piuma.readthedocs.io"><img src="https://piuma.readthedocs.io/en/latest/?badge=latest?style=flat-square"></a>
+	<a href="https://piuma.readthedocs.io"><img src="https://readthedocs.org/projects/piuma/badge/?version=latest&style=flat-square"></a>
 	<img src="https://img.shields.io/badge/lines-54-green?style=flat-square">
 	<img src="https://shields.io/github/size/Emit07/piuma/piuma/piuma.py?style=flat-square">
 	<a href="https://github.com/Emit07/piuma/blob/master/LICENSE"><img src="https://shields.io/github/license/emit07/piuma?style=flat-square"></a>
