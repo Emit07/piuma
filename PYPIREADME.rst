@@ -1,7 +1,14 @@
-Read Me
-============
+Piuma
+=====
 
-Piuma is an no-headache ultra-lightweight local document database written purely in python. With just over 50 lines (54 lines to be precise) of active code and a source file that is 3.39kb piuma is designed without just the **absoulute bare** essentials in mind. In the core version of Piuma there is no query language or any advanced search/modify functions. In its current version Piuma only stores data in memory, I plan to add local storage subpackage hopefully in the near future. This database should not be taken too seriously and should really only be used for small projects and testing.
+Piuma is an no-headache ultra-lightweight local document 
+database written purely in python. With just over 50 lines (54 lines to be 
+precise) of active code and a source file that is 3.39kb piuma is designed without 
+just the **absoulute bare** essentials in mind. In the core version of Piuma there 
+is no query language or any advanced search/modify functions. In its current 
+version Piuma only stores data in memory, I plan to add local storage subpackage 
+hopefully in the near future. This database should not be taken too seriously and 
+should really only be used for small projects and testing.
 
 Why you *should* use Piuma?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -21,4 +28,5 @@ Why you *should not* use Piuma?
 Why is it called Piuma?
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Piuma (‹più·ma›) is the Italian word for feather and (from what I feel) the word feather can convay lightness. Also I am a little proud of the logo I made :]
+Piuma is the Italian word for feather and (from what I feel) the 
+word feather can convay lightness. Also I am a little proud of the logo I made :]
