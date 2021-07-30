@@ -4,7 +4,6 @@ Usage
 Insert
 ------
 
-.. Sorry for the spaces instead of the tabs but the tabs are rendered too long on readthedocs.io (for my taste)
 .. code-block:: python
 
 	piuma.insert(
