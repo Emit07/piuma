@@ -11,12 +11,18 @@
 	<a href="https://pypi.org/project/piuma/"><img src="https://img.shields.io/pypi/v/piuma?style=flat-square"></a>
 	<img src="https://img.shields.io/badge/test%20coverage-100%25-green?style=flat-square">
 	<a href="https://piuma.readthedocs.io"><img src="https://readthedocs.org/projects/piuma/badge/?version=latest&style=flat-square"></a>
-	<img src="https://img.shields.io/badge/lines-54-green?style=flat-square">
 	<img src="https://shields.io/github/size/Emit07/piuma/piuma/piuma.py?style=flat-square">
 	<a href="https://github.com/Emit07/piuma/blob/master/LICENSE"><img src="https://shields.io/github/license/emit07/piuma?style=flat-square"></a>
 </div>
 
+<!-- <img src="https://img.shields.io/badge/lines-54-green?style=flat-square"> -->
+
 Piuma is an no-headache ultra-lightweight local document database written purely in python. With just over 50 lines (54 lines to be precise) of active code and a source file that is 3.39kb (comments included) piuma is designed without just the **absoulute bare** essentials in mind. In the core version of Piuma there is no query language or any advanced search/modify functions. In its current version Piuma only stores data in memory, I plan to add local storage subpackage hopefully in the near future. This database should not be taken too seriously and should really only be used for small projects and testing.
+
+## Quick Links
+* Github: https://github.com/emit07/piuma
+* Documentation: https://piuma.readthedocs.io/
+* PyPi: https://pypi.org/project/piuma
 
 ## Why you *should* use Piuma?
 * **Light and Small:** Piuma is written in 54 lines of code and can be sub millisecond fast because of its memory storage

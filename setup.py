@@ -13,6 +13,12 @@ version Piuma only stores data in memory, I plan to add local storage subpackage
 hopefully in the near future. This database should not be taken too seriously and 
 should really only be used for small projects and testing.
 
+Quick Links
+-----------
+- Github: https://github.com/emit07/piuma
+- Documentation: https://piuma.readthedocs.io/
+- PyPi: https://pypi.org/project/piuma
+
 Why you *should* use Piuma?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -38,7 +44,7 @@ word feather can convay lightness. Also I am a little proud of the logo I made :
 
 setup(
     name="piuma",
-    version="1.0.4",
+    version="1.0.5",
     license="gpl-3.0",
     author="Alessandro De Leo",
     author_email="emit07@protonmail.com",
