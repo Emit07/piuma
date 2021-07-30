@@ -14,7 +14,11 @@ An ultra-lighweight document oriented database in external dependancy free pytho
 >>> db.all()
 {1: {'name': 'Che Guevara', 'age': 39}}
 
-https://github.com/emit07/piuma
+Quick Links
+-----------
+- Github: https://github.com/emit07/piuma
+- Documentation: https://piuma.readthedocs.io/
+- PyPi: https://pypi.org/project/piuma
 
 Table of Contents
 -----------------
