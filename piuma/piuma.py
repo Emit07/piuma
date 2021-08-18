@@ -11,8 +11,8 @@ class Storage(ABC):
     @abstractmethod
     def read(self) -> Optional[Dict[int, Dict[Any, Any]]]:
         """
-      	The read method should return the entire database, can optionally return
-        None for initialization
+        The read method should return the entire database, can optionally
+        return None for initialization
         """
 
         raise NotImplementedError("Not Overwritten")
