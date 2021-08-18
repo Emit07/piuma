@@ -28,6 +28,7 @@ Table of Contents
    readme
    getting-started
    usage
+   changelog
 
 Other
 -----

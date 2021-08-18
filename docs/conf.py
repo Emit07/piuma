@@ -22,7 +22,7 @@ copyright = '2021, Alessandro De Leo'
 author = 'Alessandro De Leo'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.4'
+release = '1.0.5'
 
 
 # -- General configuration ---------------------------------------------------
@@ -31,7 +31,7 @@ release = '1.0.4'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-	"sphinx.ext.autodoc"
+    "sphinx.ext.autodoc"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -63,6 +63,6 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 html_sidebars = {
-	'index': ['sidebarlogo.html', 'searchbox.html'],
-	'**': ['sidebarlogo.html', 'localtoc.html', 'searchbox.html']
+    'index': ['sidebarlogo.html', 'links.html', 'searchbox.html'],
+    '**': ['sidebarlogo.html', 'localtoc.html', 'links.html', 'searchbox.html']
 }

@@ -1,3 +1,3 @@
-from .piuma import Piuma
+from .piuma import Piuma, Storage
 
-__all__ = (Piuma)
+__all__ = (Piuma, Storage)

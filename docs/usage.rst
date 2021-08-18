@@ -1,8 +1,15 @@
 Usage
-==========
+=====
 
 Insert
 ------
+	
+.. code-block:: python
+
+	<Piuma>.insert(
+	    document: dict,
+	    id: Optional[int]
+	)
 
 Inserts a new document into the database. The document value field only takes in dictionaries. This functions returns the value of the document once inserted.
 	
@@ -20,6 +27,13 @@ Insert a document with a specific id with an integer value, this field is option
 Get
 ---
 
+.. code-block:: python
+
+	<Piuma>.get(
+	    id: int,
+	)
+
+
 Returns a document by the id. The document id field only takes in integers.
 
 	>>> db.get(id=1)
@@ -29,6 +43,13 @@ Returns a document by the id. The document id field only takes in integers.
 Remove
 ------
 
+.. code-block:: python
+
+	<Piuma>.remove(
+	    id: int,
+	)
+
+
 Removes a document by the specified id. The document id field only takes in integers.
 
 	>>> db.remove(id=1234)
@@ -36,6 +57,13 @@ Removes a document by the specified id. The document id field only takes in inte
 
 Update
 ------
+
+.. code-block:: python
+
+	<Piuma>.update(
+	    document: dict,
+	    id: int 
+	)
 
 Updates a document by the id. The document id field only takes in integers. This function completely rewrites the content of the document.  
 
@@ -51,3 +79,38 @@ Returns the entire database.
 
 	>>> db.all()
 	{1: {'a':0}, 1235: {"c":[0,1,2], "g": "The quick brown fox"}}
+
+Other Usage
+===========
+
+Storages
+--------
+
+When creating the Piuma database object you can pass in a custom storage object. This storage object must have a read() and a write(data) method.
+
+.. code-block:: python
+
+	from piuma import Storage
+
+	class LoggingMemoryStorage(Storage):
+
+	    def __init__(self):
+	        self._memory = None
+
+	    def read(self) -> Optional[Dict[int, Dict[Any, Any]]]:
+	    	print("read")
+	        return self._memory
+
+	    def write(self, data: Dict[int, Dict[Any, Any]]) -> None:
+	    	print("write")
+	        self._memory = data
+
+Once this custom memory is written you can pass in the class when creating the Piuma object. When passing through the custom storage object make sure to call it.
+
+.. code-block:: python
+
+	from piuma import Piuma
+
+	db = Piuma(storage=LoggingMemoryStorage())
+
+	db.insert({"a":0})
