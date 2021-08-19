@@ -9,14 +9,7 @@ Insert
 	<Piuma>.insert(
 	    document: dict,
 	    id: Optional[int]
-	)
-
-.. code-block:: python
-
-	piuma.insert(
-	    data: Dict,
-	    id: Optional[int]=None # Generates new id if left empty
-	) -> id: int
+	) -> id: int:
 
 Inserts a new document into the database. The document value field only takes in dictionaries. This functions returns the value of the document once inserted.
 	
@@ -42,7 +35,7 @@ Get
 
 	<Piuma>.get(
 	    id: int,
-	)
+	) -> Optional[dict]
 
 Returns a document by the id. The document id field only takes in integers.
 
@@ -57,7 +50,7 @@ Remove
 
 	<Piuma>.remove(
 	    id: int,
-	)
+	) -> None:
 
 Removes a document by the specified id. The document id field only takes in integers.
 
@@ -72,7 +65,7 @@ Update
 	<Piuma>.update(
 	    document: dict,
 	    id: int 
-	)
+	) -> None:
 
 Updates a document by the id. The document id field only takes in integers. This function completely rewrites the content of the document.  
 
