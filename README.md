@@ -16,6 +16,11 @@
 
 Piuma is an no-headache ultra-lightweight local document database written purely in python. Piuma is designed without just the **absoulute bare** essentials in mind. In the core version of Piuma there is no query language or any advanced search/modify functions. In its current version Piuma only stores data in memory, I plan to add local storage subpackage hopefully in the near future. This database should not be taken too seriously and should really only be used for small projects and testing. Feel free to contribute and modify :) (Checkout the license first).
 
+## Quick Links
+* Github: https://github.com/emit07/piuma
+* Documentation: https://piuma.readthedocs.io/
+* PyPi: https://pypi.org/project/piuma
+
 ## Why you *should* use Piuma?
 * **Light and Small:** Piuma's core is written with one very small file and can be sub millisecond fast because of its memory storage
 * **Easy to Use:** Piuma runs out of the box and is easy to use and learn. Piuma also requires no dependencies or external servers.
