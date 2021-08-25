@@ -1,5 +1,5 @@
 
-from typing import Dict, Callable, Optional, Any
+from typing import MutableMapping, Mapping, Dict, Callable, Optional, Any
 from abc import ABC, abstractmethod
 
 
@@ -9,7 +9,7 @@ class Storage(ABC):
     """
 
     @abstractmethod
-    def read(self) -> Optional[Dict[int, Dict[Any, Any]]]:
+    def read(self) -> Optional[MutableMapping[Any, Any]]:
         """
         The read method should return the entire database, can optionally
         return None for initialization
@@ -18,7 +18,7 @@ class Storage(ABC):
         raise NotImplementedError("Not Overwritten")
 
     @abstractmethod
-    def write(self, data: Dict[int, Dict[Any, Any]]) -> None:
+    def write(self, data: Mapping[Any, Any]) -> None:
         """
         The write method take in the entire database and write it.
         """
@@ -33,28 +33,27 @@ class MemoryStorage(Storage):
         """
         self._memory = None
 
-    def read(self) -> Optional[Dict[int, Dict[Any, Any]]]:
+    def read(self) -> Optional[MutableMapping[Any, Any]]:
         return self._memory
 
-    def write(self, data: Dict[int, Dict[Any, Any]]) -> None:
+    def write(self, data: Mapping[Any, Any]) -> None:
         self._memory = data
 
 
 class Piuma:
 
-    def __init__(self, storage: Optional[Callable] = MemoryStorage()):
+    def __init__(self, storage: Storage = MemoryStorage()):
         """
         Main Class of Piuma
 
         This class creates the storage object and does the formatting and
-        parsing of the data stored in the storage object. This main class does
-        not include a query.
+        parsing of the data stored in the storage object.
         """
 
         self._storage = storage
-        self._next_id = None
+        self._next_id = int()
 
-    def insert(self, data: Dict, id: Optional[int] = None) -> int:
+    def insert(self, data: Mapping, id: int = int()) -> int:
         """
         Inserts a new document into the database
 
@@ -62,13 +61,12 @@ class Piuma:
         <id>: the id of the document (optional)
         """
 
-        # If the id is not specified then generate an id
         if not id:
             id = self._get_next_id()
         else:
             self._next_id = id
 
-        def updater(database: Dict):
+        def updater(database: MutableMapping[Any, Any]):
             """
             Specifies how to modify the database
 
@@ -81,7 +79,6 @@ class Piuma:
                 raise KeyError("Document with the specified id already exists")
 
             else:
-
                 database[id] = data
 
         self._update_database(updater)
@@ -92,11 +89,13 @@ class Piuma:
         """
         Returns Document by id
 
-        <query>: A query that specifies what the document should contain
         <id>: the id of the document
         """
 
         database = self._storage.read()
+
+        if not database:
+            database = {}
 
         return database[id] if id in database else None
 
@@ -107,14 +106,14 @@ class Piuma:
         <id>: the id of the document
         """
 
-        def updater(database: Dict):
+        def updater(database: MutableMapping[Any, Any]):
             # Removes document with given id
 
             database.pop(id)
 
         self._update_database(updater)
 
-    def update(self, data: Dict, id: int) -> None:
+    def update(self, data: Mapping, id: int) -> None:
         """
         Updates the document with the specified id
 
@@ -122,7 +121,7 @@ class Piuma:
         <id>: the id of the document that needs to be updated
         """
 
-        def updater(database: Dict):
+        def updater(database: MutableMapping[Any, Any]):
             # if the document is valid then update it
             if id in database:
                 database[id] = data
@@ -132,7 +131,7 @@ class Piuma:
 
         self._update_database(updater)
 
-    def all(self) -> Dict:
+    def all(self) -> Optional[MutableMapping[Any, Any]]:
         return self._storage.read()
 
     def _get_next_id(self) -> int:
@@ -148,11 +147,11 @@ class Piuma:
         database = self._storage.read()
 
         # if the database is empty then _next_id is 1
-        if not database:
-            self._next_id = 1
-        else:
+        if database:
             # the _next_id is 1 more than the biggest id
             self._next_id = max(key for key in database.keys())+1
+        else:
+            self._next_id = 1
 
         return self._next_id
 

@@ -9,6 +9,11 @@ data in memory, I plan to add local storage subpackage hopefully in the near
 future. This database should not be taken too seriously and should really only
 be used for small projects and testing.
 
+Quick Links
+-----------
+- Github: https://github.com/emit07/piuma
+- Documentation: https://piuma.readthedocs.io/
+
 Why you *should* use Piuma?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -21,13 +26,12 @@ Why you *should not* use Piuma?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Big Database:** Piuma was not designed to be used as a big database; Piuma only runs *only* in memory (for now) so the limit of how big it could be comes much quicker than other database
-- **ACID Guarantees:** Because of Piumas small nature it does not have room for ACID_ Guarantees
+- **ACID Guarantees:** Because of Piumas small nature it does not have room for [ACID Guarantees](https://en.wikipedia.org/wiki/ACID)
 - **Query Language:** Piuma does not have a query language (though I currently working on a query submodule)
 - **Storage:** While Piuma supports interchangeable storage, it only has memory storage built in
 
 Why is it called Piuma?
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Piuma is the Italian word for feather and (from what I feel) the word feather can convay lightness.
-
-.. _ACID: https://en.wikipedia.org/wiki/ACID
+Piuma is the Italian word for feather and (from what I feel) the word feather
+can convay lightness.
