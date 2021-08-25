@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="piuma",
-    version="1.0.7",
+    version="1.0.8",
     license="gpl-3.0",
     author="Alessandro De Leo",
     author_email="emit07@protonmail.com",
