@@ -1,4 +1,4 @@
-name: CI Workflow
+name: Tests
 
 on: push
 
@@ -16,9 +16,13 @@ jobs:
           python -m pip install --upgrade pip twine
           pip install flake8
           pip install mypy
+          pip install black
       - name: Run Tests
         run: |
           python3 -m unittest discover tests
+      - name: Run Black Formatter
+        run: |
+          python3 -m black piuma/*.py
       - name: Run pep8 Linter
         run: |
           python3 -m flake8

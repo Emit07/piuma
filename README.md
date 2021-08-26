@@ -9,9 +9,10 @@
 
 <div align="center">
 	<a href="https://pypi.org/project/piuma/"><img src="https://img.shields.io/pypi/v/piuma?style=flat-square"></a>
-	<img src="https://img.shields.io/badge/test%20coverage-100%25-green?style=flat-square">
+	<a href="https://github.com/emit07/piuma/actions"><img src="https://github.com/Emit07/piuma/actions/workflows/ci-workflow.yml/badge.svg"></a>
 	<a href="https://piuma.readthedocs.io"><img src="https://readthedocs.org/projects/piuma/badge/?version=latest&style=flat-square"></a>
 	<a href="https://github.com/Emit07/piuma/blob/master/LICENSE"><img src="https://shields.io/github/license/emit07/piuma?style=flat-square"></a>
+	<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </div>
 
 Piuma is an no-headache ultra-lightweight local document database written purely in python. Piuma is designed without just the **absoulute bare** essentials in mind. In the core version of Piuma there is no query language or any advanced search/modify functions. In its current version Piuma only stores data in memory, I plan to add local storage subpackage hopefully in the near future. This database should not be taken too seriously and should really only be used for small projects and testing. Feel free to contribute and modify :) (Checkout the license first).

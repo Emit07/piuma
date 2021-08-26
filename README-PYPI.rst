@@ -9,6 +9,11 @@ data in memory, I plan to add local storage subpackage hopefully in the near
 future. This database should not be taken too seriously and should really only
 be used for small projects and testing.
 
+Quick Links
+-----------
+- Github: https://github.com/emit07/piuma
+- Documentation: https://piuma.readthedocs.io/
+
 Why you *should* use Piuma?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -1,18 +1,19 @@
-
 from typing import MutableMapping, Mapping, Dict, Callable, Optional, Any
 from abc import ABC, abstractmethod
 
 
 class Storage(ABC):
     """
-    A Base class for all storages
+    An abstract class for all storages. This class ensures that any storage
+    class has a read and a write method.
     """
 
     @abstractmethod
     def read(self) -> Optional[MutableMapping[Any, Any]]:
         """
         The read method should return the entire database, can optionally
-        return None for initialization
+        return None for initialization. If any data needs to be deserialized,
+        it can be done here.
         """
 
         raise NotImplementedError("Not Overwritten")
@@ -20,17 +21,19 @@ class Storage(ABC):
     @abstractmethod
     def write(self, data: Mapping[Any, Any]) -> None:
         """
-        The write method take in the entire database and write it.
+        The write method take in the entire database and write it. If any data
+        needs to be serialized, it can be done here.
         """
+
         raise NotImplementedError("Not Overwritten")
 
 
 class MemoryStorage(Storage):
-
     def __init__(self):
         """
         A memory storage object for very fast reading and writing
         """
+
         self._memory = None
 
     def read(self) -> Optional[MutableMapping[Any, Any]]:
@@ -41,24 +44,37 @@ class MemoryStorage(Storage):
 
 
 class Piuma:
-
     def __init__(self, storage: Storage = MemoryStorage()):
         """
-        Main Class of Piuma
+        Piuma `__init__` method, initializes the database by setting the
+        storage object and the `_next_id`.
 
-        This class creates the storage object and does the formatting and
-        parsing of the data stored in the storage object.
+        Parameteres
+        -----------
+        storage: Storage, optional
+            The storage object where the database is stored.
         """
 
         self._storage = storage
         self._next_id = int()
 
-    def insert(self, data: Mapping, id: int = int()) -> int:
+    def insert(self, value: Mapping, id: int = int()) -> int:
         """
-        Inserts a new document into the database
+        Inserts a new document into the database.
 
-        <data>: the data that the document will hold
-        <id>: the id of the document (optional)
+        Parameters
+        ----------
+        value: Mapping
+            The value of the document that will be inserted. The value can take
+            in any `Mapping` type, the simplest example is `dict`.
+        id: int, optional
+            The id of the document. This parameter is optional, if no id is
+            passed in an id will be generated.
+
+        Returns
+        -------
+        int
+            returns the id of the inserted document
         """
 
         if not id:
@@ -68,28 +84,33 @@ class Piuma:
 
         def updater(database: MutableMapping[Any, Any]):
             """
-            Specifies how to modify the database
-
-            Adds the document with the key of <id>
-
-            TODO this could cause conflict if the specified id already exists
+            A common update method that specifies how to modify the database.
+            Inserts a new document into the database.
             """
 
-            if id in database:
-                raise KeyError("Document with the specified id already exists")
-
+            if id not in database:
+                database[id] = value
             else:
-                database[id] = data
+                raise KeyError("Document with the specified id already exists")
 
         self._update_database(updater)
 
         return id
 
-    def get(self, id: int) -> Dict:
+    def get(self, id: int) -> Optional[Dict]:
         """
-        Returns Document by id
+        Returns a document with a specified id.
 
-        <id>: the id of the document
+        Parameters
+        ----------
+        id: int
+            The id of the document that will be searched for
+
+        Returns
+        -------
+        dict
+            Returns the document that has specified id if it exists, if it does
+            not exist then it returns none.
         """
 
         database = self._storage.read()
@@ -103,30 +124,45 @@ class Piuma:
         """
         Removes the document with the specified id
 
-        <id>: the id of the document
+        Parameters
+        ----------
+        id: int
+            The id of the document that will be searched for
         """
 
         def updater(database: MutableMapping[Any, Any]):
-            # Removes document with given id
-
+            """
+            A common update method that specifies how to modify the database.
+            Removes the document with the specified id
+            """
             database.pop(id)
 
         self._update_database(updater)
 
-    def update(self, data: Mapping, id: int) -> None:
+    def update(self, value: Mapping, id: int) -> None:
         """
         Updates the document with the specified id
 
-        <data>: the new data of the document that will be updated
-        <id>: the id of the document that needs to be updated
+        Parameters
+        ----------
+        value: Mapping
+            The value that will replace the previous value of the specified
+            document. The value can take in any `Mapping` type, the simplest
+            example is `dict`.
+        id: int
+            The id of the document that will be searched for
         """
 
         def updater(database: MutableMapping[Any, Any]):
-            # if the document is valid then update it
+            """
+            A common update method that specifies how to modify the database.
+            If the document with the specified id exists, update it.
+            """
+
             if id in database:
-                database[id] = data
+                database[id] = value
             else:
-                # TODO should this not return an error?
+                # TODO should this not return an error or `None`?
                 raise KeyError(id)
 
         self._update_database(updater)
@@ -149,7 +185,7 @@ class Piuma:
         # if the database is empty then _next_id is 1
         if database:
             # the _next_id is 1 more than the biggest id
-            self._next_id = max(key for key in database.keys())+1
+            self._next_id = max(key for key in database.keys()) + 1
         else:
             self._next_id = 1
 
@@ -157,10 +193,13 @@ class Piuma:
 
     def _update_database(self, updater: Callable) -> None:
         """
-        A tinydb (https://github.com/msiemens/tinydb) style update class to
-        update the database and initialize it if it is not already
+        Run `updater` method to update the database and initialize it if it is
+        not already
 
-        <updater>: a function that specifies how to update the database
+        Parameters
+        ----------
+        updater: Callable
+            A method that specifies how to update the database
         """
 
         database = self._storage.read()
