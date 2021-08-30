@@ -1,8 +1,15 @@
+# Cache and system files
 __pycache__
 .DS_Store
+.mpyp_cache
+
+# Testing
 *.json
+Makefile
+
+# Build
 *.egg
 *.egg-info
 build
 dist
-snek.egg-info
+docs/build
