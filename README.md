@@ -9,7 +9,7 @@
 
 <div align="center">
 	<a href="https://pypi.org/project/piuma/"><img src="https://img.shields.io/pypi/v/piuma"></a>
-	<a href="https://github.com/emit07/piuma"><img src="https://img.shields.io/github/v/tag/emit07/piuma"></a>
+	<a href="https://github.com/Emit07/piuma/releases/latest"><img src="https://img.shields.io/github/v/tag/emit07/piuma"></a>
 	<a href="https://github.com/emit07/piuma/actions"><img src="https://github.com/Emit07/piuma/actions/workflows/ci-workflow.yml/badge.svg"></a>
 	<a href="https://piuma.readthedocs.io"><img src="https://readthedocs.org/projects/piuma/badge/?version=latest"></a>
 	<a href="https://github.com/Emit07/piuma/blob/master/LICENSE"><img src="https://shields.io/github/license/emit07/piuma"></a>
