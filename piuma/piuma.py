@@ -1,3 +1,4 @@
+
 from typing import MutableMapping, Mapping, Dict, Callable, Optional, Any
 from abc import ABC, abstractmethod
 
@@ -135,6 +136,7 @@ class Piuma:
             A common update method that specifies how to modify the database.
             Removes the document with the specified id
             """
+
             database.pop(id)
 
         self._update_database(updater)
