@@ -52,7 +52,7 @@ can convay lightness.
 
 setup(
     name="piuma",
-    version="1.1.1",
+    version="1.1.2",
     license="gpl-3.0",
     author="Alessandro De Leo",
     author_email="emit07@protonmail.com",

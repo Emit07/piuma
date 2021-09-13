@@ -1,17 +1,21 @@
 import unittest
 
 from piuma import Piuma
-from piuma.piuma import MemoryStorage
+from piuma.storage import JSONStorage
 
 
-class Test_Piuma(unittest.TestCase):
+class Test_Piuma_JSONStorage(unittest.TestCase):
 
     def setUp(self):
-        self.db = Piuma()
+        self.db = Piuma(storage=JSONStorage("db.json"))
+
+    def tearDown(self):
+        self.db._storage.write(None)
+        self.db._storage.close()
 
     def test_storage(self):
 
-        self.assertEqual(self.db._storage.__class__, MemoryStorage)
+        self.assertEqual(self.db._storage.__class__, JSONStorage)
 
     def test_insert(self):
 
@@ -136,24 +140,3 @@ class Test_Piuma(unittest.TestCase):
         self.db._update_database(update)
 
         self.assertEqual(self.db.all(), {1: {"a": 0}})
-
-
-class Test_MemoryStorage(unittest.TestCase):
-
-    def setUp(self):
-
-        self._storage = MemoryStorage()
-
-    def test_write(self):
-
-        self.assertEqual(self._storage._memory, None)
-
-        self._storage.write({})
-        self.assertEqual(self._storage._memory, {})
-
-        self._storage.write({"a": 0})
-        self.assertEqual(self._storage._memory, {"a": 0})
-
-    def test_read(self):
-
-        self.assertEqual(self._storage.read(), self._storage._memory)

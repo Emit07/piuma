@@ -6,6 +6,14 @@ This list the changes made between versions
 Version 1
 ---------
 
+3/9/2021: v1.2.0
+~~~~~~~~~~~~~~~~
+
+- **Storage:** moved storage into a seperate submodule
+- **JSONStorage:** Added a JSONStorage storage classes. Piuma finally has local storage support!
+- **README:** Changed Readme to reflect new additions
+- **Documentation:** Changed Storage Documentation
+
 18/8/2021: v1.0.5
 ~~~~~~~~~~~~~~~~~
 

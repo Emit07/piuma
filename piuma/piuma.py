@@ -1,31 +1,5 @@
 from typing import MutableMapping, Mapping, Dict, Callable, Optional, Any
-from abc import ABC, abstractmethod
-
-
-class Storage(ABC):
-    """
-    An abstract class for all storages. This class ensures that any storage
-    class has a read and a write method.
-    """
-
-    @abstractmethod
-    def read(self) -> Optional[MutableMapping[Any, Any]]:
-        """
-        The read method should return the entire database, can optionally
-        return None for initialization. If any data needs to be deserialized,
-        it can be done here.
-        """
-
-        raise NotImplementedError("Not Overwritten")
-
-    @abstractmethod
-    def write(self, data: Mapping[Any, Any]) -> None:
-        """
-        The write method take in the entire database and write it. If any data
-        needs to be serialized, it can be done here.
-        """
-
-        raise NotImplementedError("Not Overwritten")
+from .storage import Storage
 
 
 class MemoryStorage(Storage):

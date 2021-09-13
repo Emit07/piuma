@@ -1,13 +1,7 @@
 Piuma
 =====
 
-Piuma is an no-headache ultra-lightweight local document database written
-purely in python. Piuma is designed without just the **absoulute bare**
-essentials in mind. In the core version of Piuma there is no query language or
-any advanced search/modify functions. In its current version Piuma only stores
-data in memory, I plan to add local storage subpackage hopefully in the near
-future. This database should not be taken too seriously and should really only
-be used for small projects and testing.
+Piuma is an no-headache ultra-lightweight local document database written purely in python. Piuma is designed without just the **absoulute bare** essentials in mind. In the core version of Piuma there is no query language or any advanced search/modify functions. As of version v1.2.0, Piuma officially supports local json storage in a submodule. This database should not be taken too seriously and should really only be used for small to medium projects and testing. Feel free to contribute and modify :) (Checkout the license first).
 
 Quick Links
 -----------

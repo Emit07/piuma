@@ -98,7 +98,7 @@ When creating the Piuma database object you can pass in a custom storage object.
 
 .. code-block:: python
 
-	from piuma import Storage
+	from piuma.storage import Storage
 
 	class LoggingMemoryStorage(Storage):
 
@@ -115,10 +115,8 @@ When creating the Piuma database object you can pass in a custom storage object.
 
 Once this custom memory is written you can pass in the class when creating the Piuma object. When passing through the custom storage object make sure to call it.
 
-.. code-block:: python
-
-	from piuma import Piuma
-
-	db = Piuma(storage=LoggingMemoryStorage())
-
-	db.insert({"a":0})
+	>>> from piuma import Piuma
+	>>> db = Piuma(storage=LoggingMemoryStorage())
+	>>> db.insert({"a":0})
+	read
+	1
