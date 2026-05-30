@@ -46,7 +46,7 @@ design goals.
 
 setup(
     name="piuma",
-    version="1.1.4",
+    version="1.2.0",
     license="GPL-3.0-only",
     author="Alessandro De Leo",
     author_email="emit07@protonmail.com",
