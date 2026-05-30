@@ -22,16 +22,29 @@ Piuma is a lightweight Python library that provides a simple document-oriented i
 * swap or extend storage implementations
 * build custom database behaviors
 
-Out of the box, Piuma can be used as a small memory or file backed document store. However, its primary design goal is to serve as a foundation for building more complex or specialized database systems.
+Out of the box, Piuma can be used as a small memory or file backed document store. However, its primary design goal is to serve as a foundation for building more complex or specialized database systems. 
+
+Piuma has three core ideas: 
+
+* Minimal design
+* Extensibility
+* Compositional Architecture
+
 
 ## Quick Links
 * Github: https://github.com/emit07/piuma
 * Documentation: https://piuma.readthedocs.io/
 * PyPi: https://pypi.org/project/piuma
 
-# Documentation
+## Use Cases
 
-I recomend checking out the [documentation](https://piuma.readthedocs.io/) I wrote.
+Piuma works well in situations where you want a lightweight and embeddable data layer.
+
+* Building prototypes or experimental data systems
+* Adding simple document storage to Python applications
+* Creating a custom persistence layer without adopting a full database
+* Flexibility in rapid development
+* Testing environments
 
 ## Installing
 
@@ -49,7 +62,7 @@ $ pip install .
 
 ## Getting Started 
 
-Once piuma is installed you can setup Piuma and insert your first Document. 
+Once installed, you can setup Piuma and insert your first Document. 
 
 ```python
 from piuma import Piuma
@@ -74,5 +87,5 @@ Custom storage backends can be implemented by extending `Storage`.
 
 ## Why is it called Piuma?
 
-Piuma (‹più·ma›) is the Italian word for feather and (from what I feel) the word feather can convay lightness.
+Piuma (‹più·ma›) is the Italian word for feather, which reflects the design goal. 
 
