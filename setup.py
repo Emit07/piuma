@@ -46,8 +46,8 @@ design goals.
 
 setup(
     name="piuma",
-    version="1.1.2",
-    license="gpl-3.0",
+    version="1.1.3",
+    license="GPL-3.0-only"
     author="Alessandro De Leo",
     author_email="emit07@protonmail.com",
     description="A lighweight document oriented database interface written in python",
