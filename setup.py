@@ -46,11 +46,11 @@ design goals.
 
 setup(
     name="piuma",
-    version="1.1.31",
+    version="1.1.4",
     license="GPL-3.0-only",
     author="Alessandro De Leo",
     author_email="emit07@protonmail.com",
-    description="A lighweight document oriented database interface written in python",
+    description="A lighweight document oriented database interface",
     long_description_content_type="text/x-rst",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
